@@ -1,0 +1,14 @@
+.navbar {
+
+    &__logo {
+        width: 60px;
+        height: 60px;
+    }
+    &__title {
+        margin-left: 1em;
+    }
+
+}
+
+.navbar-brand { display: flex; align-items: center;}
+.navbar-collapse {align-content: flex-end;}

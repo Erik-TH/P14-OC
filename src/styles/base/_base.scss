@@ -1,24 +1,38 @@
 @use "../utils/" as *;
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import "~bootstrap/scss/bootstrap";
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+* {
   margin: 0;
   padding: 0;
+  font: inherit;
 }
 
-ul{list-style: none; padding: 0;}
-li{list-style: none;}
-a{text-decoration: none; color: inherit;}
-a:visited{text-decoration: none; color: inherit;}
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
 
+html,
 body {
-  font-family: "Roboto", sans-serif;
+  height: 100%;
 }
 
-.darkBackground {
-  background: #fbfbfb;
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
 }
