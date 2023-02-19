@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addEmployee } from "../features/employeeSlice";
 
 import { statesList } from "../data/statesList.js";
+import { departmentsList } from "../data/departmentsList"
 
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -128,7 +129,13 @@ function FormCreateEmployee() {
                 value={department}
                 required
               >
-
+                {departmentsList.map((stateObj, index) => {
+                  return (
+                    <option key={index} value={stateObj.value}>
+                      {stateObj.value}
+                    </option>
+                  );
+                })}
               </Form.Select>
             </InputGroup>
 
