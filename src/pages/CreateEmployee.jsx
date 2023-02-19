@@ -1,8 +1,9 @@
 import React from 'react'
+import FormCreateEmployee from '../components/FormCreateEmployee'
 
 function CreateEmployee() {
   return (
-    <div>CreateEmployee</div>
+    <FormCreateEmployee />
   )
 }
 

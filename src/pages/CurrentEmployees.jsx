@@ -1,9 +1,9 @@
 import React from 'react'
 
-function CurrentEmployee() {
+function CurrentEmployees() {
   return (
-    <div>CreateEmployee</div>
+    <div>Current Employees</div>
   )
 }
 
-export default CurrentEmployee
+export default CurrentEmployees
