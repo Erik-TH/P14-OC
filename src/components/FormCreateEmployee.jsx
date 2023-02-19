@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { addEmployee } from "../features/employeeSlice";
 
+import { statesList } from "../data/statesList.js";
+
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
@@ -21,7 +23,7 @@ function FormCreateEmployee() {
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
-    const [zip_code, setZipCode] = useState("");
+    const [zipCode, setZipCode] = useState("");
     const [validated, setValidated] = useState(false);
 
     const newEmployee = [{
@@ -33,7 +35,7 @@ function FormCreateEmployee() {
         street,
         city,
         state,
-        zip_code,
+        zipCode,
     },];
 
     const handleFormSubmit = (e) => {
@@ -121,7 +123,7 @@ function FormCreateEmployee() {
               <InputGroup.Text>Department</InputGroup.Text>
               <Form.Select
                 htmlSize="1"
-                aria-label="size 3 select example"
+                aria-label="department"
                 onChange={(e) => setSelectedDepartment(e.target.value)}
                 value={department}
                 required
@@ -158,7 +160,7 @@ function FormCreateEmployee() {
                   type="number"
                   placeholder="Zip Code"
                   onChange={(e) => setZipCode(e.target.value)}
-                  value={zip_code}
+                  value={zipCode}
                   required
                 />
               </Form.Group>
@@ -170,11 +172,22 @@ function FormCreateEmployee() {
                   <InputGroup.Text>State</InputGroup.Text>
                   <Form.Select
                     htmlSize="1"
-                    aria-label=""
+                    aria-label="State"
+                    label="State"
                     onChange={(e) => setState(e.target.value)}
                     value={state}
                     required
                   >
+                    {statesList.map((stateObj) => {
+                      return (
+                        <option
+                          key={stateObj.abbreviation}
+                          value={stateObj.name}
+                        >
+                          {stateObj.name}
+                        </option>
+                      );
+                    })}
                     
                   </Form.Select>
                 </InputGroup>
