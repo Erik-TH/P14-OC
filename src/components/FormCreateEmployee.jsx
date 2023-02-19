@@ -181,11 +181,11 @@ function FormCreateEmployee() {
               </Form.Group>
             </Row>
 
-            <Row>
-                <Button size="sm" type="submit">
-                  Save
-                </Button>
-            </Row>
+            <Col className="text-center">
+              <Button size="sm" variant="outline-dark" type="submit">
+                Save
+              </Button>
+            </Col>
 
           </Form>
         </Col>
