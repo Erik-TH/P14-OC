@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Header from "./components/Header";
 
 import CreateEmployee from "./pages/CreateEmployee";
-import CurrentEmployee from "./pages/CurrentEmployees";
+import CurrentEmployees from "./pages/CurrentEmployees";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route index element={<CreateEmployee />}/>
         <Route path="/createemployee" element={<CreateEmployee />} />
-        <Route path="/currentemployees" element={<CurrentEmployee />} />
+        <Route path="/currentemployees" element={<CurrentEmployees />} />
         <Route path="/*" element={<CreateEmployee />} />
       </Routes>
 
