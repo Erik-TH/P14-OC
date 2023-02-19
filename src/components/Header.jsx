@@ -37,8 +37,8 @@ function Header() {
                                     <Nav.Link>Create Employee</Nav.Link>
                                 </LinkContainer>
 
-                                <LinkContainer as="li" to="/currentemployee">
-                                    <Nav.Link>Create Employee</Nav.Link>
+                                <LinkContainer as="li" to="/currentemployees">
+                                    <Nav.Link>Current Employee</Nav.Link>
                                 </LinkContainer>
                                 
                             </Nav>
