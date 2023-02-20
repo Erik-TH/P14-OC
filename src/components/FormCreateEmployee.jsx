@@ -60,7 +60,7 @@ function FormCreateEmployee() {
             noValidate
             validated={validated}
             onSubmit={handleFormSubmit}
-            className="w-100 mb-5 mt-2 shadow border border-dark transparent rounded   m-auto p-4"
+            className="w-100 mb-5 mt-2 shadow border border-dark transparent rounded m-auto p-4"
           >
             <Row>
 
