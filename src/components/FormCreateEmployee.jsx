@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import { addEmployee } from "../features/employeeSlice";
 
 import { statesList } from "../data/statesList.js";
-import { departmentsList } from "../data/departmentsList"
+import { departmentsList } from "../data/departmentsList";
+
+import { HrnetModal } from "@erik-th/hrnet-modal";
 
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -14,45 +16,52 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 function FormCreateEmployee() {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const [firstname, setFirstname] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [birthdate, setBirthdate] = useState("");
-    const [start_date, setStartDate] = useState("");
-    const [department, setSelectedDepartment] = useState("");
-    const [street, setStreet] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [zipCode, setZipCode] = useState("");
-    const [validated, setValidated] = useState(false);
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [start_date, setStartDate] = useState("");
+  const [department, setSelectedDepartment] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [validated, setValidated] = useState(false);
 
-    const newEmployee = [{
-        firstname,
-        lastname,
-        birthdate,
-        start_date,
-        department,
-        street,
-        city,
-        state,
-        zipCode,
-    },];
+  const [openModal, setOpenModal] = useState(false);
+  const hrnetModalMessage = "Employee created"
 
-    const handleFormSubmit = (e) => {
-        const form = e.currentTarget;
-        
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-        } else {
-            setValidated(true);
-            e.preventDefault()
-            dispatch(addEmployee({newEmployee}))
-        }
-      };
+  const newEmployee = [
+    {
+      firstname,
+      lastname,
+      birthdate,
+      start_date,
+      department,
+      street,
+      city,
+      state,
+      zipCode,
+    },
+  ];
 
-    const content = (
-        <Container fluid className="transparent p-3 ">
+  const handleFormSubmit = (e) => {
+    const form = e.currentTarget;
+
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+    } else {
+      setValidated(true);
+      e.preventDefault();
+      setOpenModal((toggle) => !toggle);
+      dispatch(addEmployee({ newEmployee }));
+    }
+  };
+
+  const content = (
+    <>
+      <Container fluid className="transparent p-3 ">
         <h2 className="h2 text-center text-dark m-3">Create employee</h2>
 
         <Col xs={10} md={7} className="m-auto">
@@ -63,7 +72,6 @@ function FormCreateEmployee() {
             className="w-100 mb-5 mt-2 shadow border border-dark transparent rounded m-auto p-4"
           >
             <Row>
-
               <Form.Label className="mb-2">General informations</Form.Label>
 
               <Col>
@@ -95,7 +103,6 @@ function FormCreateEmployee() {
                   />
                 </Form.Group>
               </Col>
-              
             </Row>
 
             <InputGroup hasValidation size="sm" className="mb-2">
@@ -195,7 +202,6 @@ function FormCreateEmployee() {
                         </option>
                       );
                     })}
-                    
                   </Form.Select>
                 </InputGroup>
               </Form.Group>
@@ -206,15 +212,19 @@ function FormCreateEmployee() {
                 Save
               </Button>
             </Col>
-
           </Form>
         </Col>
       </Container>
 
+      <HrnetModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        hrnetModalMessage={hrnetModalMessage}
+      />
+    </>
+  );
 
-    )
-
-    return content
+  return content;
 }
 
-export default FormCreateEmployee
+export default FormCreateEmployee;
