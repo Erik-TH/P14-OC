@@ -1,5 +1,5 @@
-import React from 'react'
-import EmployeesTable from '../components/TableCurrentEmployees'
+import React from "react";
+import EmployeesTable from "../components/TableCurrentEmployees";
 
 import Container from "react-bootstrap/Container";
 
@@ -11,7 +11,7 @@ function CurrentEmployees() {
         <EmployeesTable />
       </Container>
     </Container>
-  )
+  );
 }
 
-export default CurrentEmployees
+export default CurrentEmployees;

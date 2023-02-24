@@ -9,7 +9,7 @@ import {
   useBlockLayout,
   useGlobalFilter,
   useSortBy,
-  useAsyncDebounce
+  useAsyncDebounce,
 } from "react-table";
 
 import { useSelector } from "react-redux";
@@ -23,17 +23,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 function TableCurrentEmployees() {
-  // const columns = [
-  //     { Header: "First Name", accessor: "firstname"},
-  //     { Header: "Last Name", accessor: "lastname"},
-  //     { Header: "Date of Birth", accessor: "birthdate"},
-  //     { Header: "Department", accessor: "department"},
-  //     { Header: "Street", accessor: "street"},
-  //     { Header: "City", accessor: "city"},
-  //     { Header: "State", accessor: "state"},
-  //     { Header: "Zip Code", accessor: "zipCode"},
-  // ]
-
   const columns = useMemo(
     () => [
       { Header: "First Name", accessor: "firstname" },
@@ -48,29 +37,28 @@ function TableCurrentEmployees() {
     []
   );
 
-  // filter table 
-  const FilterInput = ({ filter, setFilter}) => {
-    const [searchInput, setSearchInput] = useState(filter)
+  // filter table
+  const FilterInput = ({ filter, setFilter }) => {
+    const [searchInput, setSearchInput] = useState(filter);
     const onChange = useAsyncDebounce((value) => {
       setFilter(value);
-    }, 500)
+    }, 500);
 
     return (
       <InputGroup size="sm">
         <InputGroup.Text>Search :</InputGroup.Text>
         <Form.Control
-            aria-label="Search Employee"
-            type="text"
-            value={searchInput}
-            onChange={(e) => {
-              setSearchInput(e.target.value);
-              onChange(e.target.value);
-            }}
-          />
+          aria-label="Search Employee"
+          type="text"
+          value={searchInput}
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+            onChange(e.target.value);
+          }}
+        />
       </InputGroup>
-    )
-
-  }
+    );
+  };
 
   const employees = useSelector((state) => state?.employee.employeesList);
 
@@ -84,6 +72,7 @@ function TableCurrentEmployees() {
     ]);
   }, [employees]);
 
+  // react-table
   const {
     getTableProps,
     getTableBodyProps,
@@ -105,7 +94,7 @@ function TableCurrentEmployees() {
     useBlockLayout,
     useGlobalFilter,
     useSortBy,
-    usePagination,
+    usePagination
   );
 
   const firstPageRows = page.slice(0, 100);
@@ -134,10 +123,7 @@ function TableCurrentEmployees() {
             </InputGroup>
           </Col>
           <Col>
-            <FilterInput
-              filter={globalFilter}
-              setFilter={setGlobalFilter}
-            />
+            <FilterInput filter={globalFilter} setFilter={setGlobalFilter} />
           </Col>
         </Row>
       </Container>
@@ -189,7 +175,6 @@ function TableCurrentEmployees() {
         <Container className="fw-light font-monospace text-center text-sm text-capitalize">
           <Col>
             Page {pageIndex + 1} of {pageOptions.length}
-            {/* <Col> */}
             <InputGroup size="sm" className="justify-content-sm-center mb-3">
               <InputGroup.Text>Go to page : </InputGroup.Text>
               <Form.Control
@@ -203,13 +188,10 @@ function TableCurrentEmployees() {
                 }}
               />
             </InputGroup>
-          {/* </Col> */}
           </Col>
         </Container>
         <Container fluid className="mt-1 ">
           <Col className="d-flex justify-content-sm-end fw-light font-monospace text-center text-sm text-capitalize m-1">
-
-            
             <Button
               className="fw-light font-monospace text-center text-sm text-capitalize m-1"
               size="sm"
@@ -219,7 +201,7 @@ function TableCurrentEmployees() {
               disabled={!canPreviousPage}
             >
               {"|<<"}
-            </Button>{" "}
+            </Button>
             <Button
               className="fw-light font-monospace text-center text-sm text-capitalize m-1"
               size="sm"
@@ -229,7 +211,7 @@ function TableCurrentEmployees() {
               disabled={!canPreviousPage}
             >
               {"<"}
-            </Button>{" "}
+            </Button>
             <Button
               className="fw-light font-monospace text-center text-sm text-capitalize m-1"
               size="sm"
@@ -239,7 +221,7 @@ function TableCurrentEmployees() {
               disabled={!canNextPage}
             >
               {">"}
-            </Button>{" "}
+            </Button>
             <Button
               className="fw-light font-monospace text-center text-sm text-capitalize m-1"
               size="sm"
@@ -249,7 +231,7 @@ function TableCurrentEmployees() {
               disabled={!canNextPage}
             >
               {">>|"}
-            </Button>{" "}
+            </Button>
           </Col>
         </Container>
       </Row>

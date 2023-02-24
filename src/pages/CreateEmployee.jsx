@@ -1,10 +1,8 @@
-import React from 'react'
-import FormCreateEmployee from '../components/FormCreateEmployee'
+import React from "react";
+import FormCreateEmployee from "../components/FormCreateEmployee";
 
 function CreateEmployee() {
-  return (
-    <FormCreateEmployee />
-  )
+  return <FormCreateEmployee />;
 }
 
-export default CreateEmployee
+export default CreateEmployee;

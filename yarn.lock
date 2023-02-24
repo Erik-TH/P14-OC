@@ -1191,10 +1191,10 @@
   resolved "https://registry.npmjs.org/@csstools/selector-specificity/-/selector-specificity-2.1.1.tgz"
   integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
 
-"@erik-th/hrnet-modal@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/@erik-th/hrnet-modal/-/hrnet-modal-0.1.0.tgz"
-  integrity sha512-8JOBKzlk4Q31Mb5UwVUgQdbqUDsQsWviJPg50hjrSyNT6x/uGR5IBPUtdjeusVjFRgClIloUNKg+zAQgJ5QEPw==
+"@erik-th/hrnet-modal@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.npmjs.org/@erik-th/hrnet-modal/-/hrnet-modal-0.1.3.tgz"
+  integrity sha512-P33eLquo9ve7/yLWrWYtQwgGoJgigjpJUKoGEEAxTJzajii07Rrug/py028e6LElJ/d+3ZtVF+GUHfZbGaXhRQ==
 
 "@eslint/eslintrc@^1.4.1":
   version "1.4.1"

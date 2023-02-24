@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 
@@ -11,12 +11,11 @@ function App() {
       <Header />
 
       <Routes>
-        <Route index element={<CreateEmployee />}/>
+        <Route index element={<CreateEmployee />} />
         <Route path="/createemployee" element={<CreateEmployee />} />
         <Route path="/currentemployees" element={<CurrentEmployees />} />
         <Route path="/*" element={<CreateEmployee />} />
       </Routes>
-
     </Router>
   );
 }

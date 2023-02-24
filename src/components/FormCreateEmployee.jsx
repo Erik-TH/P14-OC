@@ -30,7 +30,7 @@ function FormCreateEmployee() {
   const [validated, setValidated] = useState(false);
 
   const [openModal, setOpenModal] = useState(false);
-  const hrnetModalMessage = "Employee created"
+  const hrnetModalMessage = "Employee created";
 
   const newEmployee = [
     {
@@ -52,8 +52,8 @@ function FormCreateEmployee() {
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-    } 
-    setValidated(true)
+    }
+    setValidated(true);
     if (form.checkValidity() === true) {
       e.preventDefault();
       setOpenModal((toggle) => !toggle);
@@ -137,7 +137,7 @@ function FormCreateEmployee() {
                 onChange={(e) => setSelectedDepartment(e.target.value)}
                 value={department}
                 required
-                >
+              >
                 <option value="">Select a department</option>
                 {departmentsList.map((stateObj, index) => {
                   return (
