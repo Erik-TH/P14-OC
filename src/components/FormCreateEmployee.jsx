@@ -52,8 +52,9 @@ function FormCreateEmployee() {
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-    } else {
-      setValidated(true);
+    } 
+    setValidated(true)
+    if (form.checkValidity() === true) {
       e.preventDefault();
       setOpenModal((toggle) => !toggle);
       dispatch(addEmployee({ newEmployee }));
