@@ -110,8 +110,8 @@ function FormCreateEmployee() {
             <InputGroup hasValidation size="sm" className="mb-2">
               <InputGroup.Text>Date of birth</InputGroup.Text>
               <Form.Control
-                id="inlineFormInputGroup"
                 type="date"
+                aria-label="Date of birth"
                 onChange={(e) => setBirthdate(e.target.value)}
                 value={birthdate}
                 required
@@ -121,8 +121,8 @@ function FormCreateEmployee() {
             <InputGroup hasValidation size="sm" className="mb-2">
               <InputGroup.Text>Hiring date</InputGroup.Text>
               <Form.Control
-                id="inlineFormInputGroup"
                 type="date"
+                aria-label="Hiring date"
                 onChange={(e) => setStartDate(e.target.value)}
                 value={start_date}
                 required

@@ -59,6 +59,7 @@ function TableCurrentEmployees() {
       <InputGroup size="sm">
         <InputGroup.Text>Search :</InputGroup.Text>
         <Form.Control
+            aria-label="Search Employee"
             type="text"
             value={searchInput}
             onChange={(e) => {
@@ -193,6 +194,7 @@ function TableCurrentEmployees() {
               <InputGroup.Text>Go to page : </InputGroup.Text>
               <Form.Control
                 className="input__gotoPage"
+                aria-label="Go to page"
                 onChange={(e) => {
                   const pageNumber = e.target.value
                     ? Number(e.target.value) - 1
