@@ -5,9 +5,11 @@ import { useMemo, useState, useEffect } from "react";
 
 import {
   useTable,
-  useSortBy,
   usePagination,
   useBlockLayout,
+  useGlobalFilter,
+  useSortBy,
+  useAsyncDebounce
 } from "react-table";
 
 import { useSelector } from "react-redux";
@@ -46,6 +48,29 @@ function TableCurrentEmployees() {
     []
   );
 
+  // filter table 
+  const FilterInput = ({ filter, setFilter}) => {
+    const [searchInput, setSearchInput] = useState(filter)
+    const onChange = useAsyncDebounce((value) => {
+      setFilter(value);
+    }, 500)
+
+    return (
+      <InputGroup size="sm">
+        <InputGroup.Text>Search :</InputGroup.Text>
+        <Form.Control
+            type="text"
+            value={searchInput}
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+              onChange(e.target.value);
+            }}
+          />
+      </InputGroup>
+    )
+
+  }
+
   const employees = useSelector((state) => state?.employee.employeesList);
 
   const [data, setData] = useState([]);
@@ -73,15 +98,17 @@ function TableCurrentEmployees() {
     setPageSize,
     prepareRow,
     state,
+    setGlobalFilter,
   } = useTable(
     { columns, data, initialState: { pageIndex: 0, pageSize: 10 } },
+    useBlockLayout,
+    useGlobalFilter,
     useSortBy,
     usePagination,
-    useBlockLayout
   );
 
   const firstPageRows = page.slice(0, 100);
-  const { pageIndex, pageSize } = state;
+  const { pageIndex, pageSize, globalFilter } = state;
 
   const content = (
     <>
@@ -104,6 +131,12 @@ function TableCurrentEmployees() {
                 ))}
               </Form.Select>
             </InputGroup>
+          </Col>
+          <Col>
+            <FilterInput
+              filter={globalFilter}
+              setFilter={setGlobalFilter}
+            />
           </Col>
         </Row>
       </Container>
@@ -156,9 +189,10 @@ function TableCurrentEmployees() {
           <Col>
             Page {pageIndex + 1} of {pageOptions.length}
             {/* <Col> */}
-            <InputGroup size="sm" className="mb-3">
+            <InputGroup size="sm" className="justify-content-sm-center mb-3">
               <InputGroup.Text>Go to page : </InputGroup.Text>
               <Form.Control
+                className="input__gotoPage"
                 onChange={(e) => {
                   const pageNumber = e.target.value
                     ? Number(e.target.value) - 1

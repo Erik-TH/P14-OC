@@ -51,6 +51,7 @@ function FormCreateEmployee() {
 
     if (form.checkValidity() === false) {
       e.preventDefault();
+      e.stopPropagation();
     } else {
       setValidated(true);
       e.preventDefault();
