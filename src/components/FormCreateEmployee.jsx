@@ -137,7 +137,8 @@ function FormCreateEmployee() {
                 onChange={(e) => setSelectedDepartment(e.target.value)}
                 value={department}
                 required
-              >
+                >
+                <option>Select a department</option>
                 {departmentsList.map((stateObj, index) => {
                   return (
                     <option key={index} value={stateObj.value}>
@@ -194,6 +195,7 @@ function FormCreateEmployee() {
                     value={state}
                     required
                   >
+                    <option>Select a State</option>
                     {statesList.map((stateObj) => {
                       return (
                         <option
