@@ -42,7 +42,7 @@ function TableCurrentEmployees() {
     const [searchInput, setSearchInput] = useState(filter);
     const onChange = useAsyncDebounce((value) => {
       setFilter(value);
-    }, 500);
+    }, 1000);
 
     return (
       <InputGroup size="sm">

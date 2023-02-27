@@ -1,9 +1,30 @@
-import employeeReducer from "../features/employeeSlice"
+import { persistReducer, REGISTER } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const { configureStore } = require("@reduxjs/toolkit");
+import employeeReducer from "../features/employeeSlice";
 
-export default configureStore({
-    reducer: {
-      employee: employeeReducer,
-    },
-  });
+const { configureStore, combineReducers } = require("@reduxjs/toolkit");
+
+
+const reducers = combineReducers({
+  employee: employeeReducer,
+});
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoreActions: [REGISTER],
+      },
+    }),
+});
+
+export default store

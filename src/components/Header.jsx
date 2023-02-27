@@ -33,7 +33,7 @@ function Header() {
                 </LinkContainer>
 
                 <LinkContainer as="li" to="/currentemployees">
-                  <Nav.Link>Current Employee</Nav.Link>
+                  <Nav.Link>Current Employees</Nav.Link>
                 </LinkContainer>
               </Nav>
             </Nav>
