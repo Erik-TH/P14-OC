@@ -40,7 +40,7 @@ function TableCurrentEmployees() {
   //   []
   // );
 
-  const columns = useMemo(() => tableColumns, )
+  const columns = useMemo(() => tableColumns, [])
 
   // filter table
   // const FilterInput = ({ filter, setFilter }) => {
