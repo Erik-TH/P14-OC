@@ -9,10 +9,13 @@ import {
   useBlockLayout,
   useGlobalFilter,
   useSortBy,
-  useAsyncDebounce,
+  // useAsyncDebounce,
 } from "react-table";
 
 import { useSelector } from "react-redux";
+
+import { tableColumns } from "./tableColumns";
+import { FilterTable } from "./FilterTable";
 
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
@@ -23,42 +26,44 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 function TableCurrentEmployees() {
-  const columns = useMemo(
-    () => [
-      { Header: "First Name", accessor: "firstname" },
-      { Header: "Last Name", accessor: "lastname" },
-      { Header: "Date of Birth", accessor: "birthdate" },
-      { Header: "Department", accessor: "department" },
-      { Header: "Street", accessor: "street" },
-      { Header: "City", accessor: "city" },
-      { Header: "State", accessor: "state" },
-      { Header: "Zip Code", accessor: "zipCode" },
-    ],
-    []
-  );
+  // const columns = useMemo(
+  //   () => [
+  //     { Header: "First Name", accessor: "firstname" },
+  //     { Header: "Last Name", accessor: "lastname" },
+  //     { Header: "Date of Birth", accessor: "birthdate" },
+  //     { Header: "Department", accessor: "department" },
+  //     { Header: "Street", accessor: "street" },
+  //     { Header: "City", accessor: "city" },
+  //     { Header: "State", accessor: "state" },
+  //     { Header: "Zip Code", accessor: "zipCode" },
+  //   ],
+  //   []
+  // );
+
+  const columns = useMemo(() => tableColumns, )
 
   // filter table
-  const FilterInput = ({ filter, setFilter }) => {
-    const [searchInput, setSearchInput] = useState(filter);
-    const onChange = useAsyncDebounce((value) => {
-      setFilter(value);
-    }, 1000);
+  // const FilterInput = ({ filter, setFilter }) => {
+  //   const [searchInput, setSearchInput] = useState(filter);
+  //   const onChange = useAsyncDebounce((value) => {
+  //     setFilter(value);
+  //   }, 1000);
 
-    return (
-      <InputGroup size="sm">
-        <InputGroup.Text>Search :</InputGroup.Text>
-        <Form.Control
-          aria-label="Search Employee"
-          type="text"
-          value={searchInput}
-          onChange={(e) => {
-            setSearchInput(e.target.value);
-            onChange(e.target.value);
-          }}
-        />
-      </InputGroup>
-    );
-  };
+  //   return (
+  //     <InputGroup size="sm">
+  //       <InputGroup.Text>Search :</InputGroup.Text>
+  //       <Form.Control
+  //         aria-label="Search Employee"
+  //         type="text"
+  //         value={searchInput}
+  //         onChange={(e) => {
+  //           setSearchInput(e.target.value);
+  //           onChange(e.target.value);
+  //         }}
+  //       />
+  //     </InputGroup>
+  //   );
+  // };
 
   const employees = useSelector((state) => state?.employee.employeesList);
 
@@ -123,7 +128,7 @@ function TableCurrentEmployees() {
             </InputGroup>
           </Col>
           <Col>
-            <FilterInput filter={globalFilter} setFilter={setGlobalFilter} />
+            <FilterTable filter={globalFilter} setFilter={setGlobalFilter} />
           </Col>
         </Row>
       </Container>

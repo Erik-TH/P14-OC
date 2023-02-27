@@ -1,5 +1,5 @@
 import React from "react";
-import EmployeesTable from "../components/TableCurrentEmployees";
+import EmployeesTable from "../components/employeesTable/TableCurrentEmployees";
 
 import Container from "react-bootstrap/Container";
 
