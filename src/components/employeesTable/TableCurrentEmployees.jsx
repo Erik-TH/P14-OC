@@ -1,6 +1,6 @@
 // 9 columns
 // Header : Firstname, Lastname, Start Date, Department, Date of Birth, Street, City, State, Zip Code
-// accessor: firstname lastname birthdate start_date department street city state zipCode
+// accessor: firstname lastname birthdate startDate department street city state zipCode
 import { useMemo, useState, useEffect } from "react";
 
 import {

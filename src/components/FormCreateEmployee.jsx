@@ -8,6 +8,8 @@ import { departmentsList } from "../data/departmentsList";
 
 import { HrnetModal } from "@erik-th/hrnet-modal";
 
+import Select from "./Select";
+
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
@@ -21,8 +23,8 @@ function FormCreateEmployee() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [birthdate, setBirthdate] = useState("");
-  const [start_date, setStartDate] = useState("");
-  const [department, setSelectedDepartment] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [department, setDepartment] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -37,7 +39,7 @@ function FormCreateEmployee() {
       firstname,
       lastname,
       birthdate,
-      start_date,
+      startDate,
       department,
       street,
       city,
@@ -124,14 +126,14 @@ function FormCreateEmployee() {
                 type="date"
                 aria-label="Hiring date"
                 onChange={(e) => setStartDate(e.target.value)}
-                value={start_date}
+                value={startDate}
                 required
               />
             </InputGroup>
 
             <InputGroup size="sm" className="mb-3">
               <InputGroup.Text>Department</InputGroup.Text>
-              <Form.Select
+              {/* <Form.Select
                 htmlSize="1"
                 aria-label="department"
                 onChange={(e) => setSelectedDepartment(e.target.value)}
@@ -146,7 +148,13 @@ function FormCreateEmployee() {
                     </option>
                   );
                 })}
-              </Form.Select>
+              </Form.Select> */}
+              <Select
+                label="department"
+                valueInput={department}
+                setValueInput={setDepartment}
+                options={departmentsList}
+              />
             </InputGroup>
 
             <Form.Group className="mb-1" controlId="formGridAddress1">
@@ -187,7 +195,7 @@ function FormCreateEmployee() {
               <Form.Group as={Col} controlId="formGridState">
                 <InputGroup size="sm" className="mb-3">
                   <InputGroup.Text>State</InputGroup.Text>
-                  <Form.Select
+                  {/* <Form.Select
                     htmlSize="1"
                     aria-label="State"
                     label="State"
@@ -206,7 +214,13 @@ function FormCreateEmployee() {
                         </option>
                       );
                     })}
-                  </Form.Select>
+                  </Form.Select> */}
+                  <Select
+                    label="state"
+                    valueInput={state}
+                    setValueInput={setState}
+                    options={statesList}
+                  />
                 </InputGroup>
               </Form.Group>
             </Row>
