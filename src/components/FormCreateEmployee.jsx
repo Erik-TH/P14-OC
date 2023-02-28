@@ -9,6 +9,7 @@ import { departmentsList } from "../data/departmentsList";
 import { HrnetModal } from "@erik-th/hrnet-modal";
 
 import Select from "./Select";
+import DatePicker from "./DatePicker";
 
 import Container from "react-bootstrap/Container";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -111,23 +112,33 @@ function FormCreateEmployee() {
 
             <InputGroup hasValidation size="sm" className="mb-2">
               <InputGroup.Text>Date of birth</InputGroup.Text>
-              <Form.Control
+              {/* <Form.Control
                 type="date"
                 aria-label="Date of birth"
                 onChange={(e) => setBirthdate(e.target.value)}
                 value={birthdate}
                 required
+              /> */}
+              <DatePicker
+                label="Date of Birth"
+                valueInput={birthdate}
+                setValueInput={setBirthdate}
               />
             </InputGroup>
 
             <InputGroup hasValidation size="sm" className="mb-2">
               <InputGroup.Text>Hiring date</InputGroup.Text>
-              <Form.Control
+              {/* <Form.Control
                 type="date"
                 aria-label="Hiring date"
                 onChange={(e) => setStartDate(e.target.value)}
                 value={startDate}
                 required
+              /> */}
+              <DatePicker
+                label="Hiring date"
+                valueInput={startDate}
+                setValueInput={setStartDate}
               />
             </InputGroup>
 
